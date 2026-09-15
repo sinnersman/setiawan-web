@@ -47,6 +47,10 @@
         <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-8 text-sm text-slate-500 sm:flex-row sm:px-6">
             <p>&copy; {{ date('Y') }} Risky Setiawan. All rights reserved.</p>
             <div class="flex items-center gap-4">
+                <a href="{{ $data['profile']['whatsapp'] ?? '#' }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-brand">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>
+                    WhatsApp
+                </a>
                 <a href="{{ $data['profile']['linkedin'] ?? '#' }}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-brand">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v2a6 6 0 0 1 2-2z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                     LinkedIn

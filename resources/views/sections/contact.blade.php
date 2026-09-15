@@ -10,6 +10,13 @@
             <div class="reveal rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:col-span-2">
                 <ul class="space-y-4 text-sm">
                     <li class="flex items-start gap-3">
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>
+                        </span>
+                        <span><span class="block font-bold text-slate-900">WhatsApp</span>
+                        <a href="{{ $data['profile']['whatsapp'] }}" target="_blank" rel="noopener" class="text-slate-600 hover:text-brand">{{ $data['profile']['phone'] }}</a></span>
+                    </li>
+                    <li class="flex items-start gap-3">
                         <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-brand-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         </span>
@@ -31,8 +38,12 @@
                         <span class="text-slate-600">{{ $data['profile']['location'] }}</span></span>
                     </li>
                 </ul>
+                <a href="{{ $data['profile']['whatsapp'] }}" target="_blank" rel="noopener" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg>
+                    Chat via WhatsApp
+                </a>
             </div>
-            <form method="POST" action="{{ Route::has('contact.send') ? route('contact.send') : url('/contact') }}" class="reveal rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:col-span-3">
+            <form method="POST" action="{{ route('contact.store') }}" class="reveal rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:col-span-3">
                 @csrf
                 <div class="grid gap-4 sm:grid-cols-2">
                     <div>

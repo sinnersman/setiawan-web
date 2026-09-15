@@ -17,6 +17,7 @@ class PortfolioController extends Controller
             'birth' => 'Indramayu, 10 August 2001',
             'location' => 'Cirebon, West Java, Indonesia',
             'phone' => '082320224745',
+            'whatsapp' => 'https://wa.me/6282320224745?text=Halo%20Risky%20Setiawan%2C%20saya%20melihat%20portfolio%20Anda%20dan%20ingin%20berdiskusi.',
             'email' => 'setiawanriski23@outlook.com',
             'linkedin' => 'https://linkedin.com/in/setiawan-risky',
             'photo' => 'images/profile.png',
