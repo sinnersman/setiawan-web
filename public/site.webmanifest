@@ -1,0 +1,35 @@
+{
+  "name": "Risky Setiawan — Cyber Security Analyst & DevOps Enthusiast",
+  "short_name": "Risky Setiawan",
+  "description": "Portfolio Risky Setiawan: Cyber Security Analyst & DevOps Enthusiast, Cirebon Indonesia. CTO Mindset Digital, Tech Lead Neura Terra.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "lang": "id",
+  "dir": "ltr",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

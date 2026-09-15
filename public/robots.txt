@@ -1,0 +1,16 @@
+# Risky Setiawan Portfolio — robots.txt
+User-agent: *
+Allow: /
+
+# Block sensitive Laravel paths (defense-in-depth, also hidden by framework)
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /*?*sort=
+Disallow: /*?*order=
+
+# Crawl-delay removed — Google ignores it; Bing-only if needed:
+# User-agent: Bingbot
+# Crawl-delay: 5
+
+Sitemap: http://localhost/setiawan-web/sitemap.xml
+# Production: ganti baris di atas dengan domain personal, mis. https://riskysetiawan.id/sitemap.xml

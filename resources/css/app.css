@@ -1,0 +1,268 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Brand palette: LinkedIn blue primary, soft amber accent. Flat — no gradients. */
+    --color-brand: #0a66c2;
+    --color-brand-dark: #084e96;
+    --color-brand-soft: #e7f1fb;
+}
+
+/* Section spacing utility (py-18 = 4.5rem, Tailwind v4 custom utility) */
+@utility py-18 {
+    padding-block: calc(var(--spacing) * 18);
+}
+
+/* ---------- Experience timeline ---------- */
+.timeline {
+    position: relative;
+    margin: 0;
+    padding: 0 0 0 1.75rem;
+    list-style: none;
+    border-left: 2px solid #e2e8f0;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: calc(-1.75rem - 7px);
+    top: 1.4rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #e2e8f0;
+}
+
+.timeline-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px rgba(10, 102, 194, 0.25);
+}
+
+/* ---------- Skill badges ---------- */
+.skill-badge {
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.skill-badge:hover {
+    background-color: #e7f1fb;
+    border-color: #0a66c2;
+    color: #084e96;
+}
+
+/* ---------- Scroll reveal (IntersectionObserver progressive enhancement) ----------
+   JS adds .revealed when the element enters the viewport.
+   Stagger via data-reveal-delay (JS maps it to --reveal-delay). */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 0.6s ease var(--reveal-delay, 0ms),
+        transform 0.6s ease var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
+
+/* Variants: data-reveal="fade" (no rise) or "left" (slide from left) */
+.reveal[data-reveal='fade'] {
+    transform: none;
+}
+
+.reveal[data-reveal='left'] {
+    transform: translateX(-16px);
+}
+
+.reveal[data-reveal='left'].revealed {
+    transform: none;
+}
+
+/* No-JS fallback: reveal everything (JS adds .revealed; without JS keep visible) */
+.no-js .reveal {
+    opacity: 1;
+    transform: none;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse-soft {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.55;
+    }
+}
+
+@keyframes timeline-draw {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+
+/* Subtle badge pulse (availability dot etc.) — flat, no gradient */
+.badge-pulse {
+    animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+/* ---------- Card hover lift (subtle, flat) ---------- */
+.card-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card-lift:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px -12px rgba(10, 102, 194, 0.28);
+}
+
+/* ---------- Skeleton loading (tool results) — flat, no gradient ----------
+   Solid translucent bar slides across; respects the flat design rule. */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: #e2e8f0;
+    border-radius: 0.5rem;
+    min-height: 1rem;
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation: skeleton-slide 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-slide {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(250%);
+    }
+}
+
+/* ---------- Toast ---------- */
+.toast {
+    animation: toast-in 0.3s ease;
+}
+
+.toast-hide {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast-progress > div {
+    animation: toast-progress 5s linear forwards;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes toast-progress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* ---------- Navbar shadow on scroll (JS toggles .nav-scrolled) ---------- */
+#site-header {
+    transition: box-shadow 0.25s ease;
+}
+
+#site-header.nav-scrolled {
+    box-shadow: 0 4px 16px -8px rgba(15, 23, 42, 0.18);
+}
+
+/* ---------- Reduced motion: disable all animation ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .skeleton::after {
+        display: none;
+    }
+}
+
+/* ---------- Sticky footer + footer gap ---------- */
+/* Fallback CSS (duplikasi utility Tailwind di layout:
+   body.flex.min-h-screen.flex-col + main.flex-1) agar footer tidak
+   nempel ke konten walau build CSS belum diperbarui. */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body > main {
+    flex: 1 0 auto;
+}
+
+body > footer {
+    margin-top: auto;
+}
